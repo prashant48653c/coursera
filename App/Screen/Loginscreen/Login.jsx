@@ -1,8 +1,31 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import Colors from '../../Utils/Colors'
+import * as WebBrowser from "expo-web-browser";
+import { useWarmUpBrowser } from '../../hooks/warmUpBrowser';
+import { useOAuth } from "@clerk/clerk-expo";
 
 const Login = () => {
+    WebBrowser.maybeCompleteAuthSession();
+
+useWarmUpBrowser()
+const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+ 
+const HandleGoogle = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+ console.log("first")
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
+
 return (
 <View style={{ alignItems: "center" }}>
 <Image style={styles.loginImage} source={require('./../../../assets/login.png')} />
@@ -15,7 +38,7 @@ Let's find
 </Text>
  
 <Text style={{ color: Colors.WHITE, fontSize: 15,marginTop:20,textAlign:"center" }} >Best app to get the customer and labourers towards your goal</Text>
-<TouchableOpacity style={styles.button}>
+<TouchableOpacity onPress={HandleGoogle} style={styles.button}>
     <Text style={{textAlign:"center",fontSize:15}}>Get Started</Text>
 </TouchableOpacity>
 
@@ -47,6 +70,8 @@ alignItems: "center"
 },
 button:{
     padding:15,
+    paddingRight:40,
+    paddingLeft:40,
     borderRadius:15,
     marginTop:20,
     backgroundColor:Colors.WHITE,
