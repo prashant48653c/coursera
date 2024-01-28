@@ -2,7 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Login from './App/Screen/Loginscreen/Login';
 import Colors from './App/Utils/Colors';
-import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { ClerkProvider } from "@clerk/clerk-expo";
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigation from './App/Navigation/TabNavigation';
+import { SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function App() {
@@ -21,7 +25,7 @@ export default function App() {
       try {
         return SecureStore.setItemAsync(key, value);
       } catch (err) {
-        return;
+        console.log(err)
       }
     },
   };
@@ -43,14 +47,17 @@ export default function App() {
     <ScrollView style={styles.container}>
       <Login/>
 
-
-{/* Signin and Signout components */}
-      <SignedIn>
-          <Text>You are Signed in</Text>
+ 
+        <SafeAreaView style={styles.container}>
+        <SignedIn>
+        <NavigationContainer>
+            <TabNavigation/>
+          </NavigationContainer>
         </SignedIn>
         <SignedOut>
         <Text>You are Signed out</Text>
         </SignedOut>
+      </SafeAreaView>
       
       <StatusBar style="auto" />
     </ScrollView>
