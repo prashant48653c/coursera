@@ -1,32 +1,31 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import Colors from '../../Utils/Colors'
-import * as WebBrowser from "expo-web-browser";
+import { client } from '../../Utils/KindConfig';
  
-import { useOAuth } from "@clerk/clerk-expo";
-import useWarmUpBrowser from '../../hooks/warmUpBrowser';
 
+ 
 const Login = () => {
-    WebBrowser.maybeCompleteAuthSession();
-useWarmUpBrowser()
  
-const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
  
-const HandleGoogle = React.useCallback(async () => {
-    try {
-      const { createdSessionId, signIn, signUp, setActive } =
-        await startOAuthFlow();
- console.log("first")
-      if (createdSessionId) {
-        setActive({ session: createdSessionId });
-      } else {
-        // Use signIn or signUp for next steps such as MFA
-      }
-    } catch (err) {
-      console.error("OAuth error", err);
+ 
+  const handleSignUp = async () => {
+    const token = await client.register();
+    if (token) {
+      // User was authenticated
     }
-  }, []);
-
+  };
+  
+  const handleSignIn = async () => {
+    const token = await client.login();
+    if (token) {
+      // User was authenticated
+    }
+  };
+ 
+  
+ 
+ 
 return (
 <View style={{ alignItems: "center" }}>
 <Image style={styles.loginImage} source={require('./../../../assets/login.png')} />
@@ -39,10 +38,13 @@ Let's find
 </Text>
  
 <Text style={{ color: Colors.WHITE, fontSize: 15,marginTop:20,textAlign:"center" }} >Best app to get the customer and labourers towards your goal</Text>
-<Pressable onPress={HandleGoogle} style={styles.button}>
-    <Text style={{textAlign:"center",fontSize:15}}>Get Started</Text>
+<Pressable onPress={handleSignIn}  style={styles.button}>
+    <Text style={{textAlign:"center",fontSize:15}}>Sign In</Text>
 </Pressable>
 
+<Pressable onPress={handleSignUp} style={styles.button}>
+    <Text style={{textAlign:"center",fontSize:15}}>Get Started</Text>
+</Pressable>
 </View>
 </View>
 )

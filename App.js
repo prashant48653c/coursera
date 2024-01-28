@@ -2,34 +2,32 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Login from './App/Screen/Loginscreen/Login';
 import Colors from './App/Utils/Colors';
-import { ClerkProvider } from "@clerk/clerk-expo";
-import { NavigationContainer } from '@react-navigation/native';
+import { useEffect } from 'react';
+import { client } from './App/Utils/KindConfig';
 import TabNavigation from './App/Navigation/TabNavigation';
-import { SignedIn, SignedOut } from "@clerk/clerk-expo";
-import { SafeAreaView } from 'react-native-safe-area-context';
+ import NavigationContainer from '@react-navigation/native'
+ 
+ 
 
 
 export default function App() {
 
+  const checkAuthenticate = async () => {
+    
+    if (await client.isAuthenticated) {
+        // Need to implement, e.g: call an api, etc...
+        const userProfile = await client.getUserDetails();
+console.log(userProfile);
+        console.log("Authenticated")
+    } else {
+        return <Login/>
+    }
+};
 
-  //caching functions
-  const tokenCache = {
-    async getToken(key) {
-      try {
-        return SecureStore.getItemAsync(key);
-      } catch (err) {
-        return null;
-      }
-    },
-    async saveToken(key, value) {
-      try {
-        return SecureStore.setItemAsync(key, value);
-      } catch (err) {
-        console.log(err)
-      }
-    },
-  };
-
+useEffect(() => {
+    checkAuthenticate();
+}, []);
+ 
 
 
 
@@ -38,9 +36,7 @@ export default function App() {
 
 
   return (
-    <ClerkProvider publishableKey="pk_test_Y2xldmVyLWZlcnJldC05OC5jbGVyay5hY2NvdW50cy5kZXYk"
-    tokenCache={tokenCache}
-    >
+    
 
 
    
@@ -48,21 +44,16 @@ export default function App() {
       <Login/>
 
  
-        <SafeAreaView style={styles.container}>
-        <SignedIn>
-        <NavigationContainer>
-            <TabNavigation/>
-          </NavigationContainer>
-        </SignedIn>
-        <SignedOut>
-        <Text>You are Signed out</Text>
-        </SignedOut>
-      </SafeAreaView>
+         
+     <NavigationContainer>
+      <TabNavigation/>
+      </NavigationContainer>     
+     
       
       <StatusBar style="auto" />
     </ScrollView>
 
-    </ClerkProvider>
+     
   );
 }
 

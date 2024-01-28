@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/clerk-expo": "^0.20.1",
+    "@kinde-oss/react-native-sdk-0-7x": "^1.2.2",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "expo": "~50.0.4",
