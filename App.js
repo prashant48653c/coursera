@@ -1,3 +1,4 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Login from './App/Screen/Loginscreen/Login';
@@ -5,7 +6,9 @@ import Colors from './App/Utils/Colors';
 import { useEffect } from 'react';
 import { client } from './App/Utils/KindConfig';
 import TabNavigation from './App/Navigation/TabNavigation';
- import NavigationContainer from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native';
+
+
  
  
 
@@ -37,21 +40,20 @@ useEffect(() => {
 
   return (
     
-
-
+  
    
-    <ScrollView style={styles.container}>
-      <Login/>
+    <View style={styles.container}>
+      {/* <Login/> */}
 
  
          
-     <NavigationContainer>
+     <NavigationContainer  >
       <TabNavigation/>
       </NavigationContainer>     
      
       
       <StatusBar style="auto" />
-    </ScrollView>
+    </View>
 
      
   );
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    paddingTop:20
+    paddingTop:20,width:"100%",height:"100%"
   },
   paragraph: {
    color:"white"
