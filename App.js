@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { client } from './App/Utils/KindConfig';
 import TabNavigation from './App/Navigation/TabNavigation';
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
@@ -20,7 +21,7 @@ export default function App() {
     if (await client.isAuthenticated) {
       // Need to implement, e.g: call an api, etc...
       const userProfile = await client.getUserDetails();
-      console.log(userProfile);
+     
       setauth(true)
       console.log("Authenticated")
     } else {
@@ -46,19 +47,21 @@ export default function App() {
 
     <View style={styles.container}>
       {/* <Login/> */}
+   
+    <AuthContext.Provider value={{ auth, setauth }}>
 
+<NavigationContainer  >
+  {
+    auth ? <TabNavigation /> : <ScrollView><Login /></ScrollView> 
 
-      <AuthContext.Provider value={{ auth, setauth }}>
+  }
+</NavigationContainer>
 
-        <NavigationContainer  >
-          {
-            auth ? <TabNavigation /> : <Login />
+</AuthContext.Provider>
 
-          }
-        </NavigationContainer>
+    
 
-      </AuthContext.Provider>
-
+     
 
 
       <StatusBar style="auto" />
