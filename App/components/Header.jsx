@@ -25,15 +25,15 @@ const[userDetail,setUserDetail]=useState([])
             style={{width:50,height:50,borderRadius:50}}
             />
             <View>
-            <Text style={{fontSize:18}}>Welcome, </Text>
-            <Text style={{fontSize:15,fontWeight:600}}>{userDetail?.given_name + " " + userDetail?.family_name}</Text>
+            <Text style={{fontSize:18,fontFamily:"outfit"}}>Welcome, </Text>
+            <Text style={{fontSize:15,fontWeight:600,fontFamily:"outfit-bold"}}>{userDetail?.given_name + " " + userDetail?.family_name}</Text>
             </View>
            
             
         </View>
         <View style={style.input}>
         <AntDesign name="search1" size={20} color="#ccc" />
-                <TextInput  placeholder='Search' />
+                <TextInput style={{fontFamily:"outfit"}} placeholder='Search' />
             </View>
     </>
     )

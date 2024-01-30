@@ -8,13 +8,23 @@ import { client } from './App/Utils/KindConfig';
 import TabNavigation from './App/Navigation/TabNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { useFonts } from 'expo-font';
 
 
 
 
 export const AuthContext = createContext()
 export default function App() {
+
+  const [fontsLoaded, fontError] = useFonts({
+    'outfit': require('./assets/fonts/Outfit-Regular.ttf'),
+    'outfit-medium': require('./assets/fonts/Outfit-Medium.ttf'),
+    'outfit-bold': require('./assets/fonts/Outfit-Bold.ttf'),
+
+  });
+
+
+
   const [auth, setauth] = useState(false)
   const checkAuthenticate = async () => {
 

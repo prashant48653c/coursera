@@ -15,7 +15,7 @@ export default function HomeScreen() {
 };
   return (
     <View style={{padding:10}}>
-      <Text>HomeScreen</Text>
+    
       <Button title='Logout' onPress={handleLogout} />
       <Header/>
     </View>
