@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView, Image } from 'react-native'
 import React from 'react'
 
 export default function BookingScreen() {
   return (
-    <View>
-      <Text>BookingScreen</Text>
-    </View>
+    <ScrollView>
+      <Text>Course Detail</Text>
+  
+    </ScrollView>
   )
 }
