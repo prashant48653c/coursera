@@ -52,7 +52,9 @@ let courses=[{
   teacher:"Safal Poudel",
   teacherImg:"https://www.safalpoudel.me/safal.png",
   status:"Free",
-  type:"mob"
+  type:"mob",
+  videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+  desc:"Master Next.js: Building Dynamic Web Applications is an immersive and comprehensive online course designed to elevate your skills in modern web development. Whether you're a beginner looking to dive into the world of React framework or an experienced developer seeking to enhance your expertise, this course offers a step-by-step journey through the powerful features and functionalities of Next.js."
 },{
   id:2,
   name:"Next Js Full Course for Begineer",
@@ -60,7 +62,8 @@ let courses=[{
   teacher:"Jasmin Rijal",
   teacherImg:"https://www.safalpoudel.me/safal.png",
   status:"Paid",
-  type:"web"
+  type:"web",
+  videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
 
 
 
@@ -72,7 +75,8 @@ let courses=[{
   teacher:"Shakti KC",
   teacherImg:"https://www.safalpoudel.me/safal.png",
   status:"Free",
-  type:"ai"
+  type:"ai",
+  videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
 
 
 
@@ -84,7 +88,8 @@ let courses=[{
   teacher:"Sailendra Shrestha",
   teacherImg:"https://www.safalpoudel.me/safal.png",
   status:"Paid",
-  type:"mob"
+  type:"mob",
+  videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
 
 
 
@@ -96,7 +101,8 @@ let courses=[{
   teacher:"Avinash Belbase",
   teacherImg:"https://www.safalpoudel.me/safal.png",
   status:"Paid",
-  type:"ai"
+  type:"ai",
+  videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
 
 
 

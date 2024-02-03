@@ -1,11 +1,17 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Colors from '../Utils/Colors'
-
+import {useNavigation} from '@react-navigation/native'
 export default function CourseItem({course}) {
+  const navigation=useNavigation()
     console.log(course.item)
   return (
-    <View style={{marginRight:10,backgroundColor:Colors.WHITE,paddingHorizontal:10,paddingVertical:10,borderRadius:10,marginHorizontal:10,width:250}} >
+    <TouchableOpacity onPress={()=>navigation.navigate("coursedetail",{
+      course:course  //passing course to course detail page
+    })} 
+    
+    
+    style={{marginRight:10,backgroundColor:Colors.WHITE,paddingHorizontal:10,paddingVertical:10,borderRadius:10,marginHorizontal:10,width:250}} >
 
         <Image style={{width:"100%",height:130,borderRadius:10}} 
         source={{uri:course?.item.thumbnail}} />
@@ -28,6 +34,6 @@ export default function CourseItem({course}) {
       
 
         </View>
-    </View>
+    </TouchableOpacity>
   )
 }

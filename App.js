@@ -9,6 +9,7 @@ import TabNavigation from './App/Navigation/TabNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
+import HomeNavigation from './App/Navigation/HomeNavigation';
 
 
 
@@ -62,7 +63,7 @@ export default function App() {
 
 <NavigationContainer  >
   {
-    auth ? <TabNavigation /> : <ScrollView><Login /></ScrollView> 
+    auth ? <HomeNavigation /> : <ScrollView><Login /></ScrollView> 
 
   }
 </NavigationContainer>

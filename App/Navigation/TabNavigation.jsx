@@ -7,6 +7,7 @@ import BookingScreen from '../Screen/BookingScreen/BookingScreen';
 import Colors from '../Utils/Colors';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import HomeNavigation from './HomeNavigation';
  
 
 
